@@ -1,32 +1,30 @@
 ## System Architecture Diagram
 
 ```mermaid
-flowchart TD
+flowchart LR
+    %% Define nodes
+    A([🧍 User Query: Analyze ROAS Drop]):::user --> B([🗺️ Planner Agent]):::planner
+    B --> C([📊 Data Agent]):::data
+    C --> D([🔍 Insight Agent]):::insight
+    D --> E([🧮 Evaluator Agent]):::evaluator
+    E --> F([🎨 Creative Agent]):::creative
+    F --> G([📑 Report Generator]):::report
+    G --> H([✅ Final Outputs: Report.md, Insights.json, Creatives.json, Logs]):::output
 
-    A[User Query<br>("Analyze ROAS drop")] --> B[Planner Agent]
-    B --> C[Data Agent]
-    C --> D[Insight Agent]
-    D --> E[Evaluator Agent]
-    E --> F[Creative Agent]
-    F --> G[Report Generator]
-    G --> H[(Final Reports<br>report.md, insights.json, creatives.json)]
-
-    subgraph Data Flow
-        I[(Dataset: data/synthetic_fb_ads_undergarments.csv)] --> C
-        C --> D
-        D --> E
-        E --> F
-        F --> G
+    %% Subgraph for clarity
+    subgraph AGENTS[⚙️ Agent Workflow]
+        B --> C --> D --> E --> F
     end
 
-    style A fill:#f7f7f7,stroke:#333,stroke-width:1px
-    style B fill:#ffdfba,stroke:#333,stroke-width:1px
-    style C fill:#baffc9,stroke:#333,stroke-width:1px
-    style D fill:#bae1ff,stroke:#333,stroke-width:1px
-    style E fill:#ffffba,stroke:#333,stroke-width:1px
-    style F fill:#ffb3ba,stroke:#333,stroke-width:1px
-    style G fill:#d5b3ff,stroke:#333,stroke-width:1px
-    style H fill:#f7f7f7,stroke:#333,stroke-width:1px
+    %% Define classes (colors + borders)
+    classDef user fill:#ffe0b2,stroke:#ef6c00,stroke-width:2px,color:#000,font-weight:bold;
+    classDef planner fill:#bbdefb,stroke:#1565c0,stroke-width:2px,color:#000;
+    classDef data fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#000;
+    classDef insight fill:#e1bee7,stroke:#6a1b9a,stroke-width:2px,color:#000;
+    classDef evaluator fill:#fff59d,stroke:#fbc02d,stroke-width:2px,color:#000;
+    classDef creative fill:#ffccbc,stroke:#d84315,stroke-width:2px,color:#000;
+    classDef report fill:#b3e5fc,stroke:#0288d1,stroke-width:2px,color:#000;
+    classDef output fill:#c5e1a5,stroke:#558b2f,stroke-width:2px,color:#000,font-weight:bold;
 ```
 
 ## Agent Roles and Responsibilities
