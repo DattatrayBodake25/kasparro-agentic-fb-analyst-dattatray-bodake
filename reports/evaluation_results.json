@@ -1,0 +1,29 @@
+{
+  "timestamp": "2025-10-27T14:36:09.797527",
+  "validated_hypotheses": [
+    {
+      "id": "H1",
+      "title": "Ad Fatigue reducing CTR and conversions",
+      "original_confidence": 0.82,
+      "validated_confidence": 0.9199999999999999,
+      "reasoning": "Strong evidence: many low CTR campaigns detected.",
+      "validated": true
+    },
+    {
+      "id": "H2",
+      "title": "Increased competition in ad auctions",
+      "original_confidence": 0.67,
+      "validated_confidence": 0.64,
+      "reasoning": "Moderate evidence: indirect signs via declining ROAS but stable CTR.",
+      "validated": true
+    },
+    {
+      "id": "H3",
+      "title": "Audience targeting misalignment",
+      "original_confidence": 0.74,
+      "validated_confidence": 0.65,
+      "reasoning": "Limited supporting evidence; requires further validation.",
+      "validated": true
+    }
+  ]
+}
