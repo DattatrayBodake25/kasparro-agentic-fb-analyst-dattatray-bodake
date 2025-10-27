@@ -13,7 +13,9 @@ paths:
 
 thresholds:
   low_ctr: 0.015
-  roas_drop_pct: 0.20  # 20% drop threshold for alert
+  roas_drop_pct: 0.20   # 20% drop threshold for alert
+  evaluation_confidence: 0.75   # <-- New threshold for reflection loop
+  max_reflections: 2            # <-- Optional safety cap
 
 llm:
   provider: "google"
