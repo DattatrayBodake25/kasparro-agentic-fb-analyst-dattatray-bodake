@@ -214,6 +214,24 @@ make test-integration
 
 ---
 
+## Reflection & Observability
+The system supports a reflection loop in the EvaluatorAgent, which automatically re-plans analysis if confidence falls below the configured threshold.
+This ensures agents reason dynamically rather than executing a fixed sequence.
+
+1. Configuration (from config/config.yaml):
+```
+thresholds:
+  evaluation_confidence: 0.75
+  max_reflections: 2
+```
+
+2. Example Log Excerpt (logs/pipeline.log):
+```
+{"timestamp": "2025-10-27T13:56:40.318942", "agent": "EvaluatorAgent", "event": "evaluation_result", "details": {"confidence": 0.62, "threshold": 0.75, "status": "below_threshold"}}
+{"timestamp": "2025-10-27T13:56:40.513021", "agent": "EvaluatorAgent", "event": "reflection_triggered", "details": {"reason": "Low confidence (0.62 < 0.75)", "action": "Replanning with adjusted weights"}}
+{"timestamp": "2025-10-27T13:56:41.021433", "agent": "EvaluatorAgent", "event": "reflection_completed", "details": {"new_confidence": 0.83, "reflection_attempts": 1, "status": "passed"}}
+```
+
 ## Validation Logic
 - Data Agent: Detects ROAS and CTR trends.
 - Insight Agent: Uses structured LLM prompting (Think → Analyze → Conclude).
