@@ -210,7 +210,7 @@ make test-integration
 | `reports/evaluation_results.json` | Validation results of hypotheses |
 | `reports/creatives.json`          | New ad creative suggestions      |
 | `reports/report.md`               | Final summarized report          |
-| `logs/execution_log.json`         | Structured run log (optional)    |
+| `logs/system.log`                 | Structured run log (optional)    |
 
 ---
 
