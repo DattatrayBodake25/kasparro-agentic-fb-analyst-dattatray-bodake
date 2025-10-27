@@ -29,15 +29,29 @@ The system is designed to:
 ###  Agent Flow Diagram
 
 ```mermaid
-flowchart TD
-    A[User Query: Analyze ROAS Drop] --> B[Planner Agent]
-    B --> C[Data Agent]
-    C --> D[Insight Agent]
-    D --> E[Evaluator Agent]
-    E --> F[Creative Agent]
-    F --> G[Report Generator]
-    G --> H[Final Report and Logs]
+flowchart LR
+    %% Define nodes
+    A([🧍 User Query: Analyze ROAS Drop]):::user --> B([🗺️ Planner Agent]):::planner
+    B --> C([📊 Data Agent]):::data
+    C --> D([🔍 Insight Agent]):::insight
+    D --> E([🧮 Evaluator Agent]):::evaluator
+    E --> F([🎨 Creative Agent]):::creative
+    F --> G([📑 Report Generator]):::report
+    G --> H([✅ Final Outputs: Report.md, Insights.json, Creatives.json, Logs]):::output
 
-    style A fill:#fffae6,stroke:#555,stroke-width:1px
-    style H fill:#e6ffed,stroke:#555,stroke-width:1px
+    %% Subgraph for clarity
+    subgraph AGENTS[⚙️ Agent Workflow]
+        B --> C --> D --> E --> F
+    end
+
+    %% Define classes (colors + borders)
+    classDef user fill:#ffe0b2,stroke:#ef6c00,stroke-width:2px,color:#000,font-weight:bold;
+    classDef planner fill:#bbdefb,stroke:#1565c0,stroke-width:2px,color:#000;
+    classDef data fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#000;
+    classDef insight fill:#e1bee7,stroke:#6a1b9a,stroke-width:2px,color:#000;
+    classDef evaluator fill:#fff59d,stroke:#fbc02d,stroke-width:2px,color:#000;
+    classDef creative fill:#ffccbc,stroke:#d84315,stroke-width:2px,color:#000;
+    classDef report fill:#b3e5fc,stroke:#0288d1,stroke-width:2px,color:#000;
+    classDef output fill:#c5e1a5,stroke:#558b2f,stroke-width:2px,color:#000,font-weight:bold;
+
 ```
