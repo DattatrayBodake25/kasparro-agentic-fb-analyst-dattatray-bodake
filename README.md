@@ -56,6 +56,8 @@ flowchart LR
 
 ```
 
+---
+
 ## Agent Descriptions
 
 | Agent                | Role                                                                | Key Output                |
@@ -67,3 +69,170 @@ flowchart LR
 | **Creative Agent**   | Generates new ad creative recommendations for low-CTR campaigns.    | `creatives.json`          |
 | **Report Generator** | Compiles final human-readable summary in Markdown.                  | `report.md`               |
 
+---
+
+## Project Structure
+```bash
+kasparro-agentic-fb-analyst-dattatray-bodake/
+│
+├── run.py                        # Main CLI entrypoint
+├── Makefile                      # Make-based automation
+├── run.sh                        # Optional bash runner
+├── agent_graph.md                # Agent architecture & flow
+├── requirements.txt               # Pinned dependencies
+│
+├── config/
+│   └── config.yaml                # Paths, thresholds, settings
+│
+├── src/
+│   ├── orchestrator.py            # Main orchestrator logic
+│   ├── run.py
+│   ├── utils/
+│   │   └── config_loader.py       # Config loader helper
+│   └── agents/
+│       ├── planner.py
+│       ├── data_agent.py
+│       ├── insight_agent.py
+│       ├── evaluator_agent.py
+│       ├── creative_agent.py
+│       └── report_generator.py
+│
+├── prompts/
+│   └── creative_prompt.md         # Example structured LLM prompt
+│
+├── data/
+│   ├── synthetic_fb_ads_undergarments.csv
+│   └── README.md
+│
+├── reports/
+│   ├── data_summary.json
+│   ├── insights.json
+│   ├── evaluation_results.json
+│   ├── creatives.json
+│   └── report.md
+│
+├── logs/
+│   └── system.log        
+│
+└── tests/
+    ├── test_full_agentic_pipeline.py   # Integration test
+    ├── test_planner_agent.py
+    ├── test_data_agent.py
+    ├── test_insight_agent.py
+    ├── test_evaluator_agent.py
+    ├── test_creative_agent.py
+    └── __init__.py
+```
+
+---
+
+## Setup Instructions
+1️. Clone the repository
+```bash
+git clone https://github.com/<your-username>/kasparro-agentic-fb-analyst-dattatray-bodake.git
+cd kasparro-agentic-fb-analyst-dattatray-bodake
+```
+
+2️. Create and activate virtual environment
+```
+python -m venv venv
+venv\Scripts\activate     # (Windows)
+# or
+source venv/bin/activate  # (Mac/Linux)
+```
+
+3️. Install dependencies
+```
+pip install -r requirements.txt
+```
+
+### Running the System
+Use the CLI entrypoint:
+```bash
+python run.py "Analyze ROAS drop"
+```
+Example Output
+```
+=== Starting Agentic Facebook Analyst System ===
+[PlannerAgent] Task breakdown generated successfully.
+[DataAgent] Dataset loaded: 4500 rows, ROAS trend: decline
+[InsightAgent] Hypotheses generated successfully.
+[EvaluatorAgent] 3 hypotheses validated.
+[CreativeAgent] 3365 underperforming creatives found.
+[ReportGenerator] Report successfully generated at: reports/report.md
+=== Execution Completed Successfully ===
+```
+
+---
+
+## Testing
+This project uses pytest for structured testing.
+
+### Run all tests
+```bash
+pytest -v
+```
+
+### Run only unit tests
+```
+pytest -v -m unit
+```
+
+### Run only integration tests
+```
+pytest -v -m integration
+```
+
+### Or use Makefile targets
+```
+make test
+make test-unit
+make test-integration
+```
+
+---
+
+## Makefile usage
+| Command      | Description                          |
+| ------------ | ------------------------------------ |
+| `make setup` | Create venv and install dependencies |
+| `make run`   | Run full pipeline                    |
+| `make test`  | Run all tests                        |
+| `make clean` | Remove reports/logs                  |
+
+---
+
+## Output Files
+| File                              | Description                      |
+| --------------------------------- | -------------------------------- |
+| `reports/data_summary.json`       | Key performance metrics summary  |
+| `reports/insights.json`           | Generated hypotheses             |
+| `reports/evaluation_results.json` | Validation results of hypotheses |
+| `reports/creatives.json`          | New ad creative suggestions      |
+| `reports/report.md`               | Final summarized report          |
+| `logs/execution_log.json`         | Structured run log (optional)    |
+
+---
+
+## Validation Logic
+- Data Agent: Detects ROAS and CTR trends.
+- Insight Agent: Uses structured LLM prompting (Think → Analyze → Conclude).
+- Evaluator Agent: Quantitatively validates hypotheses using pandas-based metrics.
+- Creative Agent: Generates improved creative ideas for underperforming campaigns.
+- Report Generator: Summarizes everything into report.md.
+
+---
+
+## Reproducibility
+- Deterministic seed values in config/config.yaml
+- Pinned dependencies in requirements.txt
+- Fixed sample dataset under /data
+- Optional mode: sample vs. mode: full switch in config
+
+--- 
+
+## Future Improvements
+- Add memory between runs (store insights for retraining)
+- Introduce async orchestration
+- Integrate Langfuse or OpenDevin for observability
+- Expand creative generation with A/B simulation
