@@ -30,13 +30,14 @@ The system is designed to:
 
 ```mermaid
 flowchart TD
-    A[User Query: "Analyze ROAS Drop"] --> B[Planner Agent]
+    A[User Query: Analyze ROAS Drop] --> B[Planner Agent]
     B --> C[Data Agent]
     C --> D[Insight Agent]
     D --> E[Evaluator Agent]
     E --> F[Creative Agent]
     F --> G[Report Generator]
-    G --> H[Final Report + Logs + JSON Outputs]
+    G --> H[Final Report and Logs]
 
-    style A fill:#ffd,stroke:#555
-    style H fill:#cfc,stroke:#555
+    style A fill:#fffae6,stroke:#555,stroke-width:1px
+    style H fill:#e6ffed,stroke:#555,stroke-width:1px
+```
