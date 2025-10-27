@@ -40,4 +40,3 @@ flowchart TD
 
     style A fill:#ffd,stroke:#555
     style H fill:#cfc,stroke:#555
-```
