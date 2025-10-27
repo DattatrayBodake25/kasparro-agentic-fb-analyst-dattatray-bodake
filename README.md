@@ -55,3 +55,15 @@ flowchart LR
     classDef output fill:#c5e1a5,stroke:#558b2f,stroke-width:2px,color:#000,font-weight:bold;
 
 ```
+
+## Agent Descriptions
+
+| Agent                | Role                                                                | Key Output                |
+| -------------------- | ------------------------------------------------------------------- | ------------------------- |
+| **Planner Agent**    | Decomposes the user query into subtasks and defines execution plan. | Task plan (JSON)          |
+| **Data Agent**       | Loads and summarizes dataset (ROAS, CTR, Spend, etc.).              | `data_summary.json`       |
+| **Insight Agent**    | Generates hypotheses explaining trends or drops.                    | `insights.json`           |
+| **Evaluator Agent**  | Validates hypotheses quantitatively using correlations and metrics. | `evaluation_results.json` |
+| **Creative Agent**   | Generates new ad creative recommendations for low-CTR campaigns.    | `creatives.json`          |
+| **Report Generator** | Compiles final human-readable summary in Markdown.                  | `report.md`               |
+
