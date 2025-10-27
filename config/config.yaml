@@ -5,7 +5,7 @@ project:
   mode: "sample"
 
 paths:
-  data: "data/synthetic_fb_ads_undergarments.csv"
+  data: "data/sample_fb_ads.csv"
   logs: "logs/"
   reports: "reports/"
   prompts: "prompts/"
